@@ -7,13 +7,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
 import alertContext from "../contexts/alertContext";
 import { logoutGames } from "../actions/gamesActions";
+import { deleteUser } from "../actions/userActions";
 
 const NavBar = () => {
   const user = useSelector((state) => state.user.userInfo);
-  const { setAlert, initialAlert } = useContext(alertContext);
+  const { setAlert, initialAlert, setShow } = useContext(alertContext);
   const dispatch = useDispatch();
-  const handleLogOut = () => {
+
+  const handlerLogOut = () => {
     dispatch(logout());
+    dispatch(logoutGames());
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("games");
+    setAlert(initialAlert);
+  };
+
+  const handlerDeleteAccount = () => {
+    dispatch(deleteUser(user.token, user.id, setAlert, setShow));
     dispatch(logoutGames());
     localStorage.removeItem("userInfo");
     localStorage.removeItem("games");
@@ -39,9 +49,17 @@ const NavBar = () => {
               {!user ? (
                 <ModalSign />
               ) : (
-                <Button variant="outline-light" onClick={handleLogOut}>
-                  Log Out
-                </Button>
+                <>
+                  <Button variant="outline-light" onClick={handlerLogOut}>
+                    Log Out
+                  </Button>
+                  <Button
+                    variant="outline-light"
+                    onClick={handlerDeleteAccount}
+                  >
+                    Delete Account
+                  </Button>
+                </>
               )}
             </Nav>
           </Navbar.Collapse>
