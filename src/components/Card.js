@@ -7,7 +7,7 @@ const Card = ({ game }) => {
   const { deleteGame } = useListGames();
   const navigate = useNavigate();
 
-  console.log(game);
+  //console.log(game);
 
   return (
     <div className="card m-1 mb-3 bg-secondary">

@@ -1,5 +1,6 @@
-.nav-link{
-    text-decoration: none ;
-    font-weight: 600;
-    font-size: 1.1rem;
+.nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 auto;
 }

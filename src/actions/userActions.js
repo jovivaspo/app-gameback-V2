@@ -90,31 +90,33 @@ export const logout = () => async (dispatch) => {
 };
 
 export const deleteUser =
-  (token, id, setAlert, setShow) => async (dispatch) => {
+  (token, id, setMessage, handlerShowConfirm, logout, logoutGames) =>
+  async (dispatch) => {
     try {
       const res = await helpHttp().del(URL_USER_DELETE + "/" + id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      dispatch({ type: LOGOUT });
       if (res.error) {
         throw res.error;
       } else {
         const { message } = res;
-        setAlert({ success: true, message: message });
-        setShow(true);
+        setMessage("Deleting user...come back soon 😊!");
         setTimeout(() => {
-          setAlert({ success: false, message: null });
-          setShow(false);
-        }, 1200);
+          setMessage("");
+          handlerShowConfirm();
+          localStorage.removeItem("userInfo");
+          localStorage.removeItem("games");
+          dispatch(logout());
+          dispatch(logoutGames());
+        }, 1700);
       }
     } catch (err) {
-      setShow(true);
-      setAlert({ error: true, message: "Sorry, try again later..." });
+      setMessage("Sorry, try again later...😢");
       setTimeout(() => {
-        setAlert({ error: false, message: false });
-        setShow(false);
-      }, 1200);
+        setMessage("");
+        handlerShowConfirm();
+      }, 1700);
     }
   };

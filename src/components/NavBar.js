@@ -7,12 +7,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
 import alertContext from "../contexts/alertContext";
 import { logoutGames } from "../actions/gamesActions";
-import { deleteUser } from "../actions/userActions";
+import { useConfirm } from "../useHooks/useConfirm";
+import Confirm from "./Confirm";
 
 const NavBar = () => {
-  const user = useSelector((state) => state.user.userInfo);
-  const { setAlert, initialAlert, setShow } = useContext(alertContext);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.userInfo);
+  const { setAlert, initialAlert } = useContext(alertContext);
+  const { showConfirm, handlerShowConfirm, message, setConfirm } = useConfirm(
+    dispatch,
+    user?.token,
+    user?.id
+  );
 
   const handlerLogOut = () => {
     dispatch(logout());
@@ -22,17 +28,9 @@ const NavBar = () => {
     setAlert(initialAlert);
   };
 
-  const handlerDeleteAccount = () => {
-    dispatch(deleteUser(user.token, user.id, setAlert, setShow));
-    dispatch(logoutGames());
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("games");
-    setAlert(initialAlert);
-  };
-
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
         <Container>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -50,12 +48,18 @@ const NavBar = () => {
                 <ModalSign />
               ) : (
                 <>
-                  <Button variant="outline-light" onClick={handlerLogOut}>
+                  <Button
+                    variant="outline-light m-2"
+                    size="sm"
+                    onClick={handlerLogOut}
+                  >
                     Log Out
                   </Button>
+
                   <Button
-                    variant="outline-light"
-                    onClick={handlerDeleteAccount}
+                    size="sm"
+                    variant="outline-light m-2"
+                    onClick={handlerShowConfirm}
                   >
                     Delete Account
                   </Button>
@@ -65,6 +69,13 @@ const NavBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      <Confirm
+        showConfirm={showConfirm}
+        handlerShowConfirm={handlerShowConfirm}
+        message={message}
+        setConfirm={setConfirm}
+      />
     </>
   );
 };
