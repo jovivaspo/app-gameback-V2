@@ -37,7 +37,7 @@ const NavBar = () => {
             <Nav className="me-auto">
               <Link className="nav-link" to="/">
                 <img
-                  src={process.env.PUBLIC_URL + "gameback.png"}
+                  src={process.env.PUBLIC_URL + "/gameback.png"}
                   height={100}
                   alt="logo-gameback"
                 />
