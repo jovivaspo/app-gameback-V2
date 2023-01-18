@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://jovivaspo.github.io/app-gameback-v2",
+  "homepage": "https://jovivaspo.github.io/app-gameback-V2",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
