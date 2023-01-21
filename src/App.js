@@ -20,7 +20,7 @@ function App() {
         {user && (
           <Routes>
             <Route path={`${DOMAIN}/`} element={<Backlog />} />
-            <Route path={`${DOMAIN}//edit/:id`} element={<Videogame />} />
+            <Route path={`${DOMAIN}/edit/:id`} element={<Videogame />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         )}

@@ -3,6 +3,8 @@ import { useListGames } from "../useHooks/useListGames";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
+const DOMAIN = process.env.REACT_APP_DOMAIN;
+
 const Card = ({ game }) => {
   const { deleteGame } = useListGames();
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Card = ({ game }) => {
               variant="outline-light"
               size="sm"
               className="mx-1"
-              onClick={() => navigate(`/edit/${game.id}`)}
+              onClick={() => navigate(`${DOMAIN}/edit/${game.id}`)}
             >
               See
             </Button>
