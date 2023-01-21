@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/app-gameback-V2/static/css/main.71dfc448.css",
-    "main.js": "/app-gameback-V2/static/js/main.c9284dc1.js",
+    "main.js": "/app-gameback-V2/static/js/main.523b1b1c.js",
     "index.html": "/app-gameback-V2/index.html",
     "main.71dfc448.css.map": "/app-gameback-V2/static/css/main.71dfc448.css.map",
-    "main.c9284dc1.js.map": "/app-gameback-V2/static/js/main.c9284dc1.js.map"
+    "main.523b1b1c.js.map": "/app-gameback-V2/static/js/main.523b1b1c.js.map"
   },
   "entrypoints": [
     "static/css/main.71dfc448.css",
-    "static/js/main.c9284dc1.js"
+    "static/js/main.523b1b1c.js"
   ]
 }
