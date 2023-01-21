@@ -1,10 +1,10 @@
 ## Gameback
 
-Web application, in which you can create your own video game tracking backlog.
+Web application, in which you can create your own video game tracking backlog: [Gameback](https://jovivaspo.github.io/app-gameback-V2)
 
 Gameback, tries to mimic the functionalities of Notion, game registration, tracking, ranking, drag and drop...
 
-Back-end: Node.js and MongoDB
+Back-end: Node.js and MongoDB deploy in AWS EC2. [Code](https://github.com/jovivaspo/api-gameback-V2)
 
 Front-end: React.js and Bootstrap
 
