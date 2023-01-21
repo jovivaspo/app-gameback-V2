@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import Videogame from "./pages/Videogame";
 import NotFound from "./pages/NotFound";
 
+const DOMAIN = process.env.REACT_APP_DOMAIN;
+
 function App() {
   const user = useSelector((state) => state.user.userInfo);
 
@@ -17,8 +19,11 @@ function App() {
         {!user && <Home />}
         {user && (
           <Routes>
-            <Route path="/" element={<Backlog />} />
-            <Route path="/edit/:id" element={<Videogame />} />
+            <Route path={`${REACT_APP_DOMAIN}/`} element={<Backlog />} />
+            <Route
+              path={`${REACT_APP_DOMAIN}//edit/:id`}
+              element={<Videogame />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         )}
