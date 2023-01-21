@@ -10,6 +10,8 @@ import { logoutGames } from "../actions/gamesActions";
 import { useConfirm } from "../useHooks/useConfirm";
 import Confirm from "./Confirm";
 
+const DOMAIN = process.env.REACT_APP_DOMAIN;
+
 const NavBar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.userInfo);
@@ -35,7 +37,7 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to={`${DOMAIN}`}>
                 <img
                   src={process.env.PUBLIC_URL + "/gameback.png"}
                   height={100}
