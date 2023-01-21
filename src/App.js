@@ -19,11 +19,8 @@ function App() {
         {!user && <Home />}
         {user && (
           <Routes>
-            <Route path={`${REACT_APP_DOMAIN}/`} element={<Backlog />} />
-            <Route
-              path={`${REACT_APP_DOMAIN}//edit/:id`}
-              element={<Videogame />}
-            />
+            <Route path={`${DOMAIN}/`} element={<Backlog />} />
+            <Route path={`${DOMAIN}//edit/:id`} element={<Videogame />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         )}
